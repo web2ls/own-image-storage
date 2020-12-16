@@ -1,0 +1,32 @@
+.upload {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 100;
+	width: 300px;
+	padding: 20px;
+	transform: translate(-50%, -50%);
+	background-color: #557571;
+	color: #fff;
+	text-align: center;
+	border-radius: 2px;
+}
+
+.fileInput {
+	position: absolute;
+	display: none;
+}
+
+.label {
+	padding: 10px;
+	border: 1px solid #fff;
+	text-transform: uppercase;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 2px;
+	transition: all 400ms ease;
+}
+
+.label:hover {
+	background-color: rgba(0, 0, 0, 0.4);
+}
