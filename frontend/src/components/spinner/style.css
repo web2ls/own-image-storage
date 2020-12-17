@@ -1,0 +1,30 @@
+.spinner {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 200;
+	width: 30px;
+	height: 30px;
+	background: #5aa469;
+	border-radius: 50%;
+	animation: spinner 1s infinite;
+}
+
+@keyframes spinner {
+	0% {
+		background: #5aa469;
+	}
+	25% {
+		background: #efb08c;
+	}
+	50% {
+		background: #efb08c;
+	}
+	75% {
+		background: #f8d49d;
+	}
+	100% {
+		background: #5aa469;
+	}
+}

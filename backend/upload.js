@@ -1,7 +1,7 @@
 function uploadHandler(req, res) {
   try {
     if (!req.files) {
-      res.send({
+      res.status(400).send({
         status: 400,
         message: 'No files for upload'
       });
