@@ -1,0 +1,21 @@
+.uploadControls {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.uploadButton {
+	padding: 10px;
+	border: 1px solid #fff;
+	text-transform: uppercase;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 2px;
+	transition: all 400ms ease;
+	background-color: transparent;
+	color: #fff;
+}
+
+.uploadButton:hover {
+	background-color: rgba(0, 0, 0, 0.4);
+}

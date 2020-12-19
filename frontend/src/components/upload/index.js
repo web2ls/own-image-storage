@@ -4,10 +4,12 @@ import API from '../../services/API';
 
 import Progress from '../progress';
 import Spinner from '../spinner';
+import UploadControls from '../upload-controls';
 
 const Upload = () => {
   const [isFileSelector, setIsFileSelector] = useState(true);
   const [isUploading, setIsUploading] = useState(false);
+  const [isUploadingEnd, setIsUploadingEnd] = useState(false);
 
   const fileSelect = (event) => {
     event.preventDefault();
@@ -37,16 +39,22 @@ const Upload = () => {
     API.uploadImages(formData).then(res => {
       console.log(res);
       setIsUploading(false);
+      setIsUploadingEnd(true);
     }).catch(error => {
       console.error(error);
       setIsUploading(false);
+      setIsUploadingEnd(true);
     })
+  };
+
+  const switchToUpload = () => {
+    setIsUploadingEnd(false);
   };
 
   return (
     <div class={style.upload}>
       {
-        !isUploading && (
+        !isUploading && !isUploadingEnd && (
           <>
             <input
               type="file"
@@ -63,6 +71,8 @@ const Upload = () => {
       }
 
       {isUploading && <Spinner />}
+
+      {isUploadingEnd && <UploadControls switchToUpload={switchToUpload} />}
     </div>
   )
 };

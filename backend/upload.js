@@ -11,7 +11,7 @@ function uploadHandler(req, res) {
     const data = [];
 
     if (!Array.isArray(req.files.images)) {
-      req.files.images.mv('./upload/' + req.files.images.name);
+      req.files.images.mv('./uploads/' + req.files.images.name);
       res.send({
         status: 200,
         message: 'Image has been uploaded',
