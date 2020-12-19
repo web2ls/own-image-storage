@@ -7,14 +7,17 @@ import Header from './header';
 import Home from '../routes/home';
 
 import Upload from '../components/upload';
+import Images from '../components/images';
 
 const App = () => (
 	<div id="app">
 		<Header />
-		<Router>
-			<Home path="/" />
-			<Upload path="/upload" />
-		</Router>
+		<div class="content">
+			<Router>
+				<Images path="/" />
+				<Upload path="/upload" />
+			</Router>
+		</div>
 	</div>
 )
 

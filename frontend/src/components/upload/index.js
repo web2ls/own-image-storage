@@ -13,9 +13,7 @@ const Upload = () => {
 
   const fileSelect = (event) => {
     event.preventDefault();
-    console.log('Files ready for upload');
     const files = event.target.files;
-    console.log(files);
 
     if (!files.length)
       return;
@@ -37,7 +35,6 @@ const Upload = () => {
     // }
 
     API.uploadImages(formData).then(res => {
-      console.log(res);
       setIsUploading(false);
       setIsUploadingEnd(true);
     }).catch(error => {

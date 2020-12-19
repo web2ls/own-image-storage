@@ -5,7 +5,7 @@ const config = {
     console.log('Upload progress');
   },
   headers: {
-    "Content-Type": "multipart/form-data"
+    'Content-Type': 'multipart/form-data'
   }
 }
 
@@ -17,6 +17,6 @@ export default {
     return axios.post('/upload', data, { headers });
   },
   getImages: () => {
-
+    return axios.get('/images');
   }
 };
