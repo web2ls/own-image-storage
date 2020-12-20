@@ -12,6 +12,7 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	background: url('/assets/images/bg2.jpg') no-repeat center;
 	background-size: cover;
+	background-attachment: fixed;
 	overflow: hidden;
 }
 
@@ -25,5 +26,6 @@ body {
 
 .content {
 	width: 100%;
-	margin-top: 56px;
+	margin-top: 80px;
+	padding: 0 10px;
 }
