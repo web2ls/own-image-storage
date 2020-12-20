@@ -18,5 +18,8 @@ export default {
   },
   getImages: () => {
     return axios.get('/images');
+  },
+  deleteImage: (image) => {
+    return axios.delete(`/images/${image}`)
   }
 };

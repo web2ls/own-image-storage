@@ -21,6 +21,12 @@ const Images = () => {
 
   const deleteImage = (image) => {
     console.log('delete image');
+    API.deleteImage(image).then(res => {
+      const imagesData = imagesList.filter(item => item !== image);
+      setImagesList(imagesData);
+    }).catch(err => {
+      console.error(err);
+    })
   };
 
   return (
