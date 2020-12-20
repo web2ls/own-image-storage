@@ -1,6 +1,8 @@
 import { h } from 'preact';
 import { Router } from 'preact-router';
 
+require('dotenv').config()
+
 import Header from './header';
 
 // Code-splitting is automated for `routes` directory
