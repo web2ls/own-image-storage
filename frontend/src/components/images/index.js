@@ -10,9 +10,7 @@ const Images = () => {
   const [imagesList, setImagesList] = useState([]);
 
   useEffect(() => {
-    console.log('Images list is rendered');
     API.getImages().then(res => {
-      console.log(res);
       setImagesList(res.data);
     }).catch(err => {
       console.error(err);
@@ -20,7 +18,6 @@ const Images = () => {
   }, []);
 
   const deleteImage = (image) => {
-    console.log('delete image');
     API.deleteImage(image).then(res => {
       const imagesData = imagesList.filter(item => item !== image);
       setImagesList(imagesData);

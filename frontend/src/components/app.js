@@ -10,6 +10,7 @@ import Home from '../routes/home';
 
 import Upload from '../components/upload';
 import Images from '../components/images';
+import Login from '../components/login';
 
 const App = () => (
 	<div id="app">
@@ -18,6 +19,7 @@ const App = () => (
 			<Router>
 				<Images path="/" />
 				<Upload path="/upload" />
+				<Login path="/login" />
 			</Router>
 		</div>
 	</div>
