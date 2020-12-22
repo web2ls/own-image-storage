@@ -2,6 +2,8 @@ import style from './style.css';
 import { useState } from 'preact/hooks';
 import API from '../../services/API';
 
+import withAuth from '../../HOC/withAuth';
+
 import Progress from '../progress';
 import Spinner from '../spinner';
 import UploadControls from '../upload-controls';
@@ -74,4 +76,6 @@ const Upload = () => {
   )
 };
 
-export default Upload;
+const UploadWithAuth = withAuth(Upload);
+
+export default UploadWithAuth;

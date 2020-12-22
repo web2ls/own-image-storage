@@ -10,18 +10,17 @@ const Login = () => {
   const [login, setLogin] = useState('');
   const [passwd, setPasswd] = useState('');
 
-  const tryLogin = () => {
-    console.log('Try login');
+  const tryLogin = (event) => {
+    event.preventDefault();
+
     if (!login || !passwd) {
       console.log('Data is empty');
       return;
     }
 
     AuthService.login(login, passwd).then(res => {
-      console.log('User is logged in');
       route('/');
     }).catch(err => {
-      console.log('User is not logged in');
       route('/login');
     })
   };
@@ -36,25 +35,27 @@ const Login = () => {
 
   return (
     <div class={style.login}>
-      <div>
-        <input
-          class={style.loginInput}
-          type="text"
-          placeholder="enter your login..."
-          value={login}
-          onChange={onChangeLogin} />
-      </div>
-      <div>
-        <input
-          class={style.loginInput}
-          type="password"
-          placeholder="enter your password..."
-          value={passwd}
-          onChange={onChangePasswd} />
-      </div>
-      <div>
-        <button class={style.loginBtn} type="button" onClick={tryLogin}>Login</button>
-      </div>
+      <form>
+        <div>
+          <input
+            class={style.loginInput}
+            type="text"
+            placeholder="enter your login..."
+            value={login}
+            onChange={onChangeLogin} />
+        </div>
+        <div>
+          <input
+            class={style.loginInput}
+            type="password"
+            placeholder="enter your password..."
+            value={passwd}
+            onChange={onChangePasswd} />
+        </div>
+        <div>
+          <button class={style.loginBtn} type="submit" onClick={tryLogin}>Login</button>
+        </div>
+      </form>
     </div>
   )
 };

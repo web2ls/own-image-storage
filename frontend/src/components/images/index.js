@@ -6,6 +6,8 @@ import API from '../../services/API';
 
 import Image from '../image';
 
+import withAuth from '../../HOC/withAuth';
+
 const Images = () => {
   const [imagesList, setImagesList] = useState([]);
 
@@ -35,4 +37,6 @@ const Images = () => {
   )
 };
 
-export default Images;
+const ImagesWithAuth = withAuth(Images);
+
+export default ImagesWithAuth;

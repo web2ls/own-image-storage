@@ -21,8 +21,11 @@ const AuthService = {
       })
     })
   },
-  isAuth: () => {
-
+  isAuthorized: () => {
+    return auth.currentUser;
+  },
+  initAuthObserver: (callback) => {
+    auth.onAuthStateChanged(callback);
   }
 };
 
