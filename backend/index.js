@@ -8,13 +8,17 @@ const uploadHandler = require('./upload');
 const getImages = require('./getImages');
 const deleteImageHandler = require('./deleteImage');
 
-require('dotenv').config()
+require('dotenv').config();
+
+const corsOptions = {
+  origin: 'http://localhost:8080'
+}
 
 const checkAuthUser = require('./middleware/auth');
 
 const PORT = process.env.PORT || 8000;
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.static('public'));
 app.use(express.static('uploads'));
 app.use(checkAuthUser);
