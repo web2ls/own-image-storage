@@ -6,6 +6,8 @@ import AuthService from '../../services/Auth';
 
 import { useState } from 'preact/hooks';
 
+const MS_IN_12_HOURS = 12 * 60 * 60 * 1000;
+
 const Login = () => {
   const [login, setLogin] = useState('');
   const [passwd, setPasswd] = useState('');
@@ -19,6 +21,8 @@ const Login = () => {
     }
 
     AuthService.login(login, passwd).then(res => {
+      console.log(res);
+      localStorage.setItem('expires', new Date().getTime() + MS_IN_12_HOURS);
       route('/');
     }).catch(err => {
       route('/login');

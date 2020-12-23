@@ -4,8 +4,9 @@ import AuthService from '../services/Auth';
 
 const withAuth = (WrappedComponent) => {
   return () => {
-    console.log('current auth state is: ', AuthService.isAuthorized());
-    if (AuthService.isAuthorized() === null) {
+    const expires = localStorage.getItem('expires');
+    if (!expires || Number(expires) <= new Date().getTime()) {
+      AuthService.logout();
       route('/login');
       return;
     }
