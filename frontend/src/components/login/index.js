@@ -21,7 +21,6 @@ const Login = () => {
     }
 
     AuthService.login(login, passwd).then(res => {
-      console.log(res);
       localStorage.setItem('expires', new Date().getTime() + MS_IN_12_HOURS);
       route('/');
     }).catch(err => {
