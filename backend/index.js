@@ -8,16 +8,21 @@ const uploadHandler = require('./upload');
 const getImages = require('./getImages');
 const deleteImageHandler = require('./deleteImage');
 
+require('dotenv').config()
+
+const checkAuthUser = require('./middleware/auth');
+
 const PORT = process.env.PORT || 8000;
 
+app.use(cors());
+app.use(express.static('public'));
+app.use(express.static('uploads'));
+app.use(checkAuthUser);
 app.use(bodyParser.json());
 app.use(fileUpload({
   createParentPath: true
 }));
 app.use(morgan('dev'));
-app.use(cors());
-app.use(express.static('public'));
-app.use(express.static('uploads'));
 
 app.get('/home', (req, res) => res.send('Hello user'));
 app.get('/images', getImages);
