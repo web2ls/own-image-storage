@@ -7,7 +7,7 @@ const Image = (props) => {
   const copyImageUrl = () => {
     const $textArea = document.createElement('textarea');
     const $content = document.querySelector('.content');
-    $textArea.value = source;
+    $textArea.value = process.env.PREACT_APP_NODE_ENV === 'development' ? source : window.location.origin + source;
     $content.appendChild($textArea);
     $textArea.focus();
     $textArea.select();
