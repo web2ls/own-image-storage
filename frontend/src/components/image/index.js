@@ -1,7 +1,8 @@
 import style from './style.css';
 
 const Image = (props) => {
-  const source = `http://localhost:8000/${props.image}`;
+  const domain = process.env.PREACT_APP_NODE_ENV === 'development' ? process.env.PREACT_APP_DEV_SERVER_URL + '/' : process.env.PREACT_APP_PROD_SERVER_URL;
+  const source = `${domain}${props.image}`;
 
   const copyImageUrl = () => {
     const $textArea = document.createElement('textarea');
