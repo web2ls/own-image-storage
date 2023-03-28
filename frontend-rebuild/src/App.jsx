@@ -1,11 +1,13 @@
-import { useState } from 'react'
-import './App.css'
+import './App.css';
+
+import Layout from './components/Layout';
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
+      <Layout />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
