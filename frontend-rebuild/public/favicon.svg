@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="1000" height="1000"><rect width="1000" height="1000" rx="200" ry="200" fill="#555555"></rect><g transform="matrix(1,0,0,1,0,0)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="64px" height="64px"><svg version="1.1" id="icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+<g>
+	<path fill="#E6E9ED" d="M49,45.5V28.49c7.73,0,14,6.27,14,14c0,7.74-6.27,14-14,14H12c-6.08,0-11-4.92-11-11c0-6.07,4.92-11,11-11
+		h4V45.5H49z"></path>
+	<g>
+		<path fill="#CCD1D9" d="M51,46.503H14.001c-0.553,0-1-0.447-1-1s0.447-1,1-1H51c0.553,0,1,0.447,1,1S51.553,46.503,51,46.503z"></path>
+	</g>
+	<g>
+		<path fill="#F6BB42" d="M49.001,22.502H46c-0.553,0-1-0.447-1-1s0.447-1,1-1h3.001c0.553,0,1,0.447,1,1
+			S49.554,22.502,49.001,22.502z"></path>
+	</g>
+	<g>
+		<path fill="#F6BB42" d="M49.001,25.505c-0.553,0-1-0.447-1-1v-3.003c0-0.553,0.447-1,1-1s1,0.447,1,1v3.003
+			C50.001,25.058,49.554,25.505,49.001,25.505z"></path>
+	</g>
+	<rect x="46" y="21.5" fill="#F6BB42" width="3" height="3"></rect>
+	<polygon fill="#F5F7FA" points="46,8.5 41,8.5 41,3.5 	"></polygon>
+	<polygon fill="#FFCE54" points="46,24.5 28,24.5 24,20.5 20,20.5 16,20.5 16,34.49 16,45.5 49,45.5 49,28.49 49,24.5 	"></polygon>
+	<circle fill="#ED5565" cx="32.5" cy="34.99" r="6.5"></circle>
+	<polygon fill="#E6E9ED" points="46,21.5 46,24.5 28,24.5 24,20.5 20,20.5 20,3.5 41,3.5 41,8.5 46,8.5 	"></polygon>
+	<path fill="#CCD1D9" d="M63,46.5c0,7.73-6.27,14-14,14H12c-6.08,0-11-4.93-11-11v-4.01c0,6.08,4.92,11,11,11h37
+		c7.73,0,14-6.26,14-14V46.5z"></path>
+	<g>
+		<path fill="#FFCE54" d="M49.001,46.503h-33c-0.553,0-1-0.447-1-1V20.501c0-0.553,0.447-1,1-1h8c0.266,0,0.52,0.105,0.707,0.293
+			l3.71,3.711h20.583c0.553,0,1,0.447,1,1v20.998C50.001,46.056,49.554,46.503,49.001,46.503z M17.001,44.503h31V25.505H28.004
+			c-0.266,0-0.52-0.105-0.707-0.293l-3.71-3.711h-6.586V44.503z"></path>
+	</g>
+	<g>
+		<path fill="#DA4453" d="M35.001,35.994h-5c-0.553,0-1-0.447-1-1s0.447-1,1-1h5c0.553,0,1,0.447,1,1S35.554,35.994,35.001,35.994z"></path>
+	</g>
+	<g>
+		<path fill="#DA4453" d="M32.501,38.494c-0.553,0-1-0.447-1-1v-5c0-0.553,0.447-1,1-1s1,0.447,1,1v5
+			C33.501,38.047,33.054,38.494,32.501,38.494z"></path>
+	</g>
+	<rect x="15.001" y="44.503" fill="#FFCE54" width="35" height="2"></rect>
+</g>
+</svg></svg></g></svg>

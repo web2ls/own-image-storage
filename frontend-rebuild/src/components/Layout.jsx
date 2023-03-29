@@ -1,13 +1,17 @@
 import styled from 'styled-components';
 
+import Sidebar from './Sidebar';
+import Header from './Header';
+import Main from './Main';
+
 function Layout() {
   return (
     <LayoutWrapper>
-      <div className="sidebar">Sidebar</div>
-      <div>
-        <header>Header</header>
-        <main>Main section content</main>
-      </div>
+      <Sidebar />
+      <ContentWrapper>
+        <Header />
+        <Main />
+      </ContentWrapper>
     </LayoutWrapper>
   )
 }
@@ -20,12 +24,8 @@ const LayoutWrapper = styled.div`
   width: 1280px;
   height: 100vh;
   margin: 0 auto;
+`;
 
-  & .sidebar {
-    flex-basis: 300px;
-  }
-
-  & main {
-    flex: 1;
-  }
+const ContentWrapper = styled.div`
+  width: 100%;
 `;
