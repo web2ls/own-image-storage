@@ -22,7 +22,7 @@ const LayoutWrapper = styled.div`
   display: flex;
   flex-direction: row;
   width: 1280px;
-  height: 100vh;
+  height: 100%;
   margin: 0 auto;
 `;
 

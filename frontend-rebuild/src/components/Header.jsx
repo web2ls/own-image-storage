@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 
+import IconButton from '../ui/IconButton';
+
 const Header = () => {
   return (
     <HeaderWrapper>
-      <div>Upload section</div>
-      <div>Logo section</div>
+      <div>
+        <IconButton icon='faSquarePlus' label='Add files' />
+      </div>
+      <div>
+        <UserAvatar />
+      </div>
     </HeaderWrapper>
   )
 };
@@ -20,4 +26,12 @@ const HeaderWrapper = styled.header`
   height: 60px;
   padding: 0 10px;
   color: var(--black);
+`;
+
+const UserAvatar = styled.div`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 42%, rgba(0,212,255,1) 100%);
 `;

@@ -9,7 +9,7 @@ const Sidebar = () => {
     <SidebarWrapper>
       <img className='logo' src={logo} alt='logo' />
       <Navigation>
-        <MenuButton label='My Cloud' icon='faWindowMaximize' />
+        <MenuButton active={true} label='My Cloud' icon='faWindowMaximize' />
         <MenuButton label='Shared Files' icon='faWindowMaximize' />
         <MenuButton label='Images' icon='faWindowMaximize' />
       </Navigation>
@@ -20,6 +20,7 @@ const Sidebar = () => {
 export default Sidebar;
 
 const SidebarWrapper = styled.div`
+  align-self: stretch;
   flex-basis: 250px;
   padding: 10px;
   background: var(--dark);
