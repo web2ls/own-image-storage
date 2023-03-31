@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from "react-router-dom";
 
 import MenuButton from '../ui/MenuButton';
 
@@ -9,9 +10,21 @@ const Sidebar = () => {
     <SidebarWrapper>
       <img className='logo' src={logo} alt='logo' />
       <Navigation>
-        <MenuButton active={true} label='My Cloud' icon='faWindowMaximize' />
-        <MenuButton label='Shared Files' icon='faWindowMaximize' />
-        <MenuButton label='Images' icon='faWindowMaximize' />
+        <LinkWrapper to='/'>
+          {({ isActive, isPending }) => (
+            <MenuButton active={isActive} label='My Cloud' icon='faWindowMaximize' />
+          )}
+        </LinkWrapper>
+        <LinkWrapper to='/images'>
+          {({ isActive }) => (
+            <MenuButton active={isActive} label='Shared Files' icon='faWindowMaximize' />
+          )}
+        </LinkWrapper>
+        <LinkWrapper to='/shared'>
+          {({ isActive }) => (
+            <MenuButton active={isActive} label='Images' icon='faWindowMaximize' />
+          )}
+        </LinkWrapper>
       </Navigation>
     </SidebarWrapper>
   )
@@ -30,8 +43,20 @@ const SidebarWrapper = styled.div`
     width: 50px;
     height: 50px;
   }
+
+  & a.active {
+    color: yellow;
+  }
 `;
 
 const Navigation = styled.nav`
   margin: 40px 0;
+`;
+
+const LinkWrapper = styled(NavLink)`
+  text-decoration: none;
+
+  &.active {
+    color: red;
+  }
 `;
