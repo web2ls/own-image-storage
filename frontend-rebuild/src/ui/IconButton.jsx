@@ -1,10 +1,19 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWindowMaximize, faSquarePlus } from '@fortawesome/free-regular-svg-icons';
+import {
+  faWindowMaximize,
+  faSquarePlus,
+  faFolder,
+} from '@fortawesome/free-regular-svg-icons';
+import {
+  faEllipsisVertical,
+} from '@fortawesome/free-solid-svg-icons';
 
 const iconsPack = {
   faWindowMaximize,
   faSquarePlus,
+  faFolder,
+  faEllipsisVertical,
 };
 
 const IconButton = ({ icon, label = null }) => {
