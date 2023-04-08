@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <HeaderWrapper>
       <div>
-        <IconButton icon='faSquarePlus' label='Add files' />
+        <IconButton icon='faSquarePlus' label='Add files' active={true} size='medium' background={true} />
       </div>
       <div>
         <UserAvatar />

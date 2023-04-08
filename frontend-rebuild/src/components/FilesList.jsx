@@ -3,31 +3,10 @@ import styled from 'styled-components';
 
 import FileItem from "./FileItem";
 
-const data = [
-  {
-    id: 1,
-    name: 'file1',
-    createdAt: new Date().getTime(),
-  },
-  {
-    id: 2,
-    name: 'file2',
-    createdAt: new Date().getTime(),
-  },
-  {
-    id: 3,
-    name: 'file3',
-    createdAt: new Date().getTime(),
-  },
-  {
-    id: 4,
-    name: 'file4',
-    createdAt: new Date().getTime(),
-  },
-]
+import { MOCK_FILES_LIST } from '../constants';
 
 const FilesList = () => {
-  const [files, setFiles] = useState(data);
+  const [files, setFiles] = useState(MOCK_FILES_LIST);
   const [selectedFileId, setSelectedFileId] = useState(null);
 
   const selectFile = (id) => {

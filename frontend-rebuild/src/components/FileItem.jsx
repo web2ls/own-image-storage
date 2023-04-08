@@ -6,7 +6,7 @@ const FileItem = ({ file, selected, selectFile }) => {
   return (
     <FileItemWrapper onClick={() => selectFile(file.id)}>
       <FileContentWrapper $selected={selected}>
-        <IconButton icon='faFolder' />
+        <IconButton icon={file.type} size='large' background={false} active={true} />
         <IconButton icon='faEllipsisVertical' />
       </FileContentWrapper>
       <FooterWrapper $selected={selected}>123.3 MB</FooterWrapper>

@@ -3,24 +3,40 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faWindowMaximize,
   faSquarePlus,
-  faFolder,
 } from '@fortawesome/free-regular-svg-icons';
 import {
   faEllipsisVertical,
+  faFileWord,
+  faFileExcel,
+  faFileVideo,
+  faFileAudio,
+  faFilePdf,
+  faFileZipper,
+  faFileImage,
+  faFile,
+  faFolder,
 } from '@fortawesome/free-solid-svg-icons';
 
 const iconsPack = {
   faWindowMaximize,
   faSquarePlus,
-  faFolder,
   faEllipsisVertical,
+  'word': faFileWord,
+  'excel': faFileExcel,
+  'video': faFileVideo,
+  'audio': faFileAudio,
+  'pdf': faFilePdf,
+  'archive': faFileZipper,
+  'image': faFileImage,
+  'file': faFile,
+  'folder': faFolder
 };
 
-const IconButton = ({ icon, label = null }) => {
+const IconButton = ({ icon, size = 'small', label = null, active = false, background = false }) => {
   return (
     <IconButtonWrapper>
-      <IconWrapper>
-        <FontAwesomeIcon icon={iconsPack[icon]} />
+      <IconWrapper $background={background} className={size} $active={active}>
+        <FontAwesomeIcon className={size} icon={iconsPack[icon]} />
       </IconWrapper>
       {label}
     </IconButtonWrapper>
@@ -35,6 +51,21 @@ const IconButtonWrapper = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
+  & svg.small {
+    width: 15px;
+    height: 15px;
+  }
+
+  & svg.medium {
+    width: 25px;
+    height: 25px;
+  }
+
+  & svg.large {
+    width: 35px;
+    height: 35px;
+  }
 `;
 
 const IconWrapper = styled.div`
@@ -44,7 +75,22 @@ const IconWrapper = styled.div`
   width: 30px;
   height: 30px;
   margin-right: 10px;
-  background: var(--gray);
+  background: ${({ $background }) => $background ? 'var(--gray)' : 'transparent'};
   border-radius: 50%;
-  color: var(--purple);
+  color: ${({ $active }) => $active ? 'var(--purple)' : 'var(--dark-gray)'};
+
+  &.small {
+    width: 25px;
+    height: 25px;
+  }
+
+  &.medium {
+    width: 35px;
+    height: 35px;
+  }
+
+  &.large {
+    width: 50px;
+    height: 50px;
+  }
 `;
