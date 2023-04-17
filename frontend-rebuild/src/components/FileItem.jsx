@@ -30,7 +30,6 @@ const FileItemWrapper = styled.div`
   margin-bottom: 40px;
   background: var(--white);
   border-radius: 20px;
-  gap: 10px;
 `;
 
 const FileContentWrapper = styled.div`
@@ -39,6 +38,7 @@ const FileContentWrapper = styled.div`
   align-items: flex-start;
   flex: 1;
   padding: 10px;
+  padding-bottom: 0;
   border-radius: 20px 20px 0 0;
   border: ${props => props.$selected ? '3px solid var(--purple)' : '3px solid var(--white)'};
   border-bottom: none;

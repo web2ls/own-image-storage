@@ -1,13 +1,14 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import IconButton from '../ui/IconButton';
 
 const Header = () => {
   return (
     <HeaderWrapper>
-      <div>
+      <Link to='/upload'>
         <IconButton icon='faSquarePlus' label='Add files' active={true} size='medium' background={true} />
-      </div>
+      </Link>
       <div>
         <UserAvatar />
       </div>
@@ -26,6 +27,11 @@ const HeaderWrapper = styled.header`
   height: 60px;
   padding: 0 10px;
   color: var(--black);
+
+  & a {
+    text-decoration: none;
+    color: var(--black);
+  }
 `;
 
 const UserAvatar = styled.div`
