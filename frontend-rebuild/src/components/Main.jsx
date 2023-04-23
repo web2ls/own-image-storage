@@ -10,7 +10,7 @@ const Main = () => {
   return (
     <MainWrapper>
       <Routes>
-        <Route path='/' element={<FilesList />} />
+
         <Route path='/images' element={<ImagesList />} />
         <Route path='/shared' element={<SharedFilesList />} />
         <Route path='/upload' element={<Upload />} />
