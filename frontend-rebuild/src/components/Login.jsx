@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Login = () => {
   return (
-    <div>
+    <div style={{color: 'black'}}>
       Login
     </div>
   )
