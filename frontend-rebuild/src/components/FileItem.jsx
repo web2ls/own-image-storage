@@ -30,6 +30,7 @@ const FileItemWrapper = styled.div`
   margin-bottom: 40px;
   background: var(--white);
   border-radius: 20px;
+  margin-right: 10px;
 `;
 
 const FileContentWrapper = styled.div`

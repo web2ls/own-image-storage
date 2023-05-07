@@ -6,9 +6,9 @@ const iconsPack = {
   faWindowMaximize
 };
 
-const MenuButton = ({ label, active, icon = null }) => {
+const MenuButton = ({ label, active, icon = null, alignLabel = 'left' }) => {
   return (
-    <MenuButtonWrapper className={active ? 'active' : ''}>
+    <MenuButtonWrapper className={active ? 'active' : ''} $alignLabel={alignLabel}>
       {icon && <IconWrapper icon={iconsPack[icon]} />}
       <span>{label}</span>
     </MenuButtonWrapper>
@@ -20,25 +20,24 @@ export default MenuButton;
 const MenuButtonWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: ${({$alignLabel}) => $alignLabel === 'left' ? 'flex-start' : $alignLabel === 'right' ? 'flex-end' : 'center'};
   align-items: center;
   width: 100%;
   height: 50px;
   padding: 0 10px;
-  margin: 20px 0;
   cursor: pointer;
-  text-align: left;
   color: var(--white);
-  transition: all 0.3s;
+  transition: all 0.4s;
+  font-size: 14px;
+  text-transform: uppercase;
 
   &:hover {
-    background: #473080;
-    border-radius: 10px;
+    background: var(--purple-gradient);
+    filter: grayscale(50%);
   }
 
   &.active {
-    background: #473080;
-    border-radius: 10px;
+    background: var(--purple-gradient);
   }
 `;
 

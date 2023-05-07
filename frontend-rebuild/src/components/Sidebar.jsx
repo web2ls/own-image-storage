@@ -35,8 +35,8 @@ export default Sidebar;
 const SidebarWrapper = styled.div`
   align-self: stretch;
   flex-basis: 250px;
-  padding: 10px;
-  background: var(--dark);
+  /* background: var(--dark); */
+  background: var(--purple-gradient);
   text-align: center;
 
   & .logo {
