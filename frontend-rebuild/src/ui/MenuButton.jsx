@@ -6,9 +6,12 @@ const iconsPack = {
   faWindowMaximize
 };
 
-const MenuButton = ({ label, active, icon = null, alignLabel = 'left' }) => {
+const MenuButton = ({ label, active, icon = null, alignLabel = 'left', onClick }) => {
   return (
-    <MenuButtonWrapper className={active ? 'active' : ''} $alignLabel={alignLabel}>
+    <MenuButtonWrapper
+      className={active ? 'active' : ''}
+      $alignLabel={alignLabel}
+      onClick={onClick || onClick()}>
       {icon && <IconWrapper icon={iconsPack[icon]} />}
       <span>{label}</span>
     </MenuButtonWrapper>

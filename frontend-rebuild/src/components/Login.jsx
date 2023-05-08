@@ -1,19 +1,91 @@
+import {useState, useEffect} from 'react';
 import styled from 'styled-components';
+import * as EmailValidator from 'email-validator';
 import MenuButton from '../ui/MenuButton';
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isEmptyErr, setIsEmptyErr] = useState(false);
+  const [isEmailFormatErr, setIsEmailFormatErr] = useState(false);
+  const [isLoginErr, setIsLoginErr] = useState(false);
+  const [isErr, setIsErr] = useState(false);
+
+  useEffect(() => {
+    setIsErr(isEmptyErr || isEmailFormatErr || isLoginErr);
+  }, [isEmptyErr, isEmailFormatErr, isLoginErr]);
+
+  const onChangeEmail = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const onChangePassword = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const onPressEnter = (event) => {
+    console.log(event);
+    if (event.code !== 'Enter') return;
+
+    onSubmit();
+  };
+
+  const onSubmit = () => {
+    resetErr();
+
+    if (!email.trim() || !password.trim()) {
+      setIsEmptyErr(true);
+      return;
+    }
+
+    if (!EmailValidator.validate(email)) {
+      setIsEmailFormatErr(true);
+      return;
+    }
+
+    console.log('try login into the system');
+
+    // TODO: login async operation
+  }
+
+  const resetErr = () => {
+    setIsEmptyErr(false);
+    setIsEmailFormatErr(false);
+    setIsLoginErr(false);
+  }
+
   return (
     <Blackground>
       <LoginWrapper>
         <Header>
-          <h3>sign in</h3>
+          <h3>authorization</h3>
         </Header>
-        <InputsWrapper>
-          <input type='text' placeholder='email' />
-          <input type='password' placeholder='password' />
+        <InputsWrapper onKeyDown={onPressEnter}>
+          <input
+            type='text'
+            value={email}
+            onChange={onChangeEmail}
+            placeholder='email' />
+
+          <input
+            type='password'
+            value={password}
+            onChange={onChangePassword}
+            placeholder='password' />
+
+          {isEmptyErr && (
+            <ErrorWrapper>Please fill in all the fields</ErrorWrapper>
+          )}
+          {isEmailFormatErr && (
+            <ErrorWrapper>Email format is incorrect</ErrorWrapper>
+          )}
+          {isLoginErr && (
+            <ErrorWrapper>Login or password is incorrect</ErrorWrapper>
+          )}
         </InputsWrapper>
 
-        <MenuButton label='Login' active={true} alignLabel='center' />
+
+        <MenuButton label='Login' active={true} alignLabel='center' onClick={onSubmit} />
       </LoginWrapper>
     </Blackground>
   )
@@ -73,4 +145,13 @@ const InputsWrapper = styled.div`
     background: rgba(0, 0, 0, 0.9);
     color: var(--white);
   }
+`;
+
+const ErrorWrapper = styled.div`
+  color: var(--error);
+  font-size: 12px;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  line-height: 28px;
 `;
