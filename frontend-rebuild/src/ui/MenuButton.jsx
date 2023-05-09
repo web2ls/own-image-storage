@@ -11,7 +11,7 @@ const MenuButton = ({ label, active, icon = null, alignLabel = 'left', onClick }
     <MenuButtonWrapper
       className={active ? 'active' : ''}
       $alignLabel={alignLabel}
-      onClick={onClick || onClick()}>
+      onClick={onClick ? onClick : undefined}>
       {icon && <IconWrapper icon={iconsPack[icon]} />}
       <span>{label}</span>
     </MenuButtonWrapper>

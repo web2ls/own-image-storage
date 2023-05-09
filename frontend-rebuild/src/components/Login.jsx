@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import * as EmailValidator from 'email-validator';
 import MenuButton from '../ui/MenuButton';
+import AuthService from '../services/Auth';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -9,6 +10,7 @@ const Login = () => {
   const [isEmptyErr, setIsEmptyErr] = useState(false);
   const [isEmailFormatErr, setIsEmailFormatErr] = useState(false);
   const [isLoginErr, setIsLoginErr] = useState(false);
+  // TODO: добавить подстветку инпутов на основе этого флага
   const [isErr, setIsErr] = useState(false);
 
   useEffect(() => {
@@ -24,7 +26,6 @@ const Login = () => {
   };
 
   const onPressEnter = (event) => {
-    console.log(event);
     if (event.code !== 'Enter') return;
 
     onSubmit();
@@ -43,9 +44,11 @@ const Login = () => {
       return;
     }
 
-    console.log('try login into the system');
-
-    // TODO: login async operation
+    AuthService.login(email, password).then(res => {
+      console.log(res);
+    }).catch(err => {
+      console.error(err);
+    })
   }
 
   const resetErr = () => {
