@@ -35,7 +35,7 @@ export default Sidebar;
 const SidebarWrapper = styled.div`
   align-self: stretch;
   flex-basis: 250px;
-  /* background: var(--dark); */
+  min-height: 100vh;
   background: var(--purple-gradient);
   text-align: center;
 

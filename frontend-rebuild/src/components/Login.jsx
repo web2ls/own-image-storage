@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import * as EmailValidator from 'email-validator';
 import MenuButton from '../ui/MenuButton';
@@ -12,6 +13,7 @@ const Login = () => {
   const [isLoginErr, setIsLoginErr] = useState(false);
   // TODO: добавить подстветку инпутов на основе этого флага
   const [isErr, setIsErr] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsErr(isEmptyErr || isEmailFormatErr || isLoginErr);
@@ -46,8 +48,10 @@ const Login = () => {
 
     AuthService.login(email, password).then(res => {
       console.log(res);
+      navigate('/');
     }).catch(err => {
       console.error(err);
+      setIsLoginErr(true);
     })
   }
 
@@ -63,18 +67,20 @@ const Login = () => {
         <Header>
           <h3>authorization</h3>
         </Header>
-        <InputsWrapper onKeyDown={onPressEnter}>
-          <input
+        <Input
             type='text'
             value={email}
             onChange={onChangeEmail}
-            placeholder='email' />
-
-          <input
+            placeholder='email'
+            $isError={isErr}
+            onKeyDown={onPressEnter} />
+          <Input
             type='password'
             value={password}
             onChange={onChangePassword}
-            placeholder='password' />
+            placeholder='password'
+            $isError={isErr}
+            onKeyDown={onPressEnter} />
 
           {isEmptyErr && (
             <ErrorWrapper>Please fill in all the fields</ErrorWrapper>
@@ -85,7 +91,6 @@ const Login = () => {
           {isLoginErr && (
             <ErrorWrapper>Login or password is incorrect</ErrorWrapper>
           )}
-        </InputsWrapper>
 
 
         <MenuButton label='Login' active={true} alignLabel='center' onClick={onSubmit} />
@@ -152,9 +157,20 @@ const InputsWrapper = styled.div`
 
 const ErrorWrapper = styled.div`
   color: var(--error);
-  font-size: 12px;
-  font-weight: 300;
+  font-size: 10px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 3px;
   line-height: 28px;
+`;
+
+const Input = styled.input`
+    width: 80%;
+    height: 40px;
+    margin-bottom: 20px;
+    padding: 0 5px;
+    border: ${({$isError}) => $isError ? '1px solid var(--error)' : '1px solid var(--purple-second)'};
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.9);
+    color: var(--white);
 `;

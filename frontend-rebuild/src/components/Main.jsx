@@ -24,6 +24,4 @@ export default Main;
 
 const MainWrapper = styled.main`
   flex: 1;
-  height: calc(100% - 60px);
-  padding-bottom: 40px;
 `;
