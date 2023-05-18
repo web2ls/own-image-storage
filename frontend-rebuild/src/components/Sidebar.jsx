@@ -10,7 +10,7 @@ const Sidebar = () => {
     <SidebarWrapper>
       <img className='logo' src={logo} alt='logo' />
       <Navigation>
-        <LinkWrapper to='/'>
+        <LinkWrapper to='/cloud'>
           {({ isActive, isPending }) => (
             <MenuButton active={isActive} label='My Cloud' icon='faWindowMaximize' />
           )}

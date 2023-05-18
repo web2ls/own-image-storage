@@ -1,9 +1,7 @@
 import './App.css';
 import { Routes, Route } from "react-router-dom";
-
 import Layout from './components/Layout';
 import Login from './components/Login';
-import FilesList from './components/FilesList';
 
 function App() {
   return (

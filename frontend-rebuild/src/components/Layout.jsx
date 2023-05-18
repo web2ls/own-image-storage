@@ -3,16 +3,19 @@ import styled from 'styled-components';
 import Sidebar from './Sidebar';
 import Header from './Header';
 import Main from './Main';
+import AuthGuard from './AuthGuard';
 
 function Layout() {
   return (
-    <LayoutWrapper>
-      <Sidebar />
-      <ContentWrapper>
-        <Header />
-        <Main />
-      </ContentWrapper>
-    </LayoutWrapper>
+    <AuthGuard>
+      <LayoutWrapper>
+        <Sidebar />
+        <ContentWrapper>
+          <Header />
+          <Main />
+        </ContentWrapper>
+      </LayoutWrapper>
+    </AuthGuard>
   )
 }
 
