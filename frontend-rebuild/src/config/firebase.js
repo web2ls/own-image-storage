@@ -1,5 +1,10 @@
 import {initializeApp} from 'firebase/app';
-import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+} from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_APP_API_KEY,
@@ -12,5 +17,9 @@ const firebaseConfig = {
 
 initializeApp(firebaseConfig);
 
-export const auth = getAuth();
-export const signInWithEmailAndPasswd = signInWithEmailAndPassword;
+export default {
+  auth: getAuth(),
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+};

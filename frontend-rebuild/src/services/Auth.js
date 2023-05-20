@@ -1,10 +1,12 @@
-import { auth, signInWithEmailAndPasswd } from '../config/firebase';
+import fireAuth from '../config/firebase';
+
+const {auth, signInWithEmailAndPassword, signOut} = fireAuth;
 
 const AuthService = {
   login: (login, passwd) => {
     console.log(auth);
     return new Promise((resolve, reject) => {
-      signInWithEmailAndPasswd(auth, login, passwd).then(user => {
+      signInWithEmailAndPassword(auth, login, passwd).then(user => {
         resolve(true);
       }).catch(err => {
         console.error(err);
@@ -15,8 +17,8 @@ const AuthService = {
   },
   logout: () => {
     return new Promise((resolve, reject) => {
-      auth.signOut().then(res => {
-        resolve(true);
+      signOut(auth).then(res => {
+        resolve(res);
       }).catch(err => {
         reject(err);
       })
