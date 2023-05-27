@@ -1,17 +1,27 @@
-import { useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import { Transition } from 'react-transition-group';
 
 import FileItem from "./FileItem";
 import SidebarInfo from './SidebarInfo';
+import APIService from '../services/API';
 
 import { MOCK_FILES_LIST } from '../constants';
 
 const FilesList = () => {
-	const [files, setFiles] = useState(MOCK_FILES_LIST);
+	const [files, setFiles] = useState([]);
 	const [selectedFileId, setSelectedFileId] = useState(null);
 	const [isSidebarInfo, setIsSidebarInfo] = useState(false);
 	const nodeRef = useRef(null);
+
+	useEffect(() => {
+		APIService.getImages().then(res => {
+			console.log(res.data);
+			setFiles(res.data);
+		}).catch(err => {
+			console.error(err);
+		})
+	}, []);
 
 	const selectFile = (id) => {
 		console.log('select file', id);
