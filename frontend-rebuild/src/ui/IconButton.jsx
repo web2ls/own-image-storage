@@ -27,7 +27,9 @@ const iconsPack = {
   'audio': faFileAudio,
   'pdf': faFilePdf,
   'archive': faFileZipper,
-  'image': faFileImage,
+  'jpeg': faFileImage,
+  'jpg': faFileImage,
+  'png': faFileImage,
   'file': faFile,
   'folder': faFolder
 };

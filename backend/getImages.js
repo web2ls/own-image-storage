@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 const dir = './uploads/';
 
@@ -9,7 +10,14 @@ function getImages(req, res) {
     } else {
       const data = [];
       files.forEach(file => {
-        data.push(file);
+        const stats = fs.statSync(dir + file);
+        const obj = {
+          name: file,
+          type: path.extname(file).split('.')[1],
+          size: Math.round((stats.size) / 1024).toString() + ' KB',
+          createdAt: stats.birthtime
+        }
+        data.push(obj);
       });
       res.status(200).json(data)
     }

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import IconButton from '../ui/IconButton';
 
-const FileItem = ({ file, selected, selectFile, toggleSidebarInfo }) => {
+const FileItem = ({ id, file, selected, selectFile, toggleSidebarInfo }) => {
   const toggleInfo = (event) => {
     console.log('click in tgw info');
     event.stopPropagation();
@@ -10,12 +10,12 @@ const FileItem = ({ file, selected, selectFile, toggleSidebarInfo }) => {
   }
 
   return (
-    <FileItemWrapper onClick={() => selectFile(file.id)}>
+    <FileItemWrapper onClick={() => selectFile(id)}>
       <FileContentWrapper $selected={selected}>
         <IconButton icon={file.type} size='large' background={false} active={true} />
         <IconButton icon='faEllipsisVertical' onClick={toggleInfo} />
       </FileContentWrapper>
-      <FooterWrapper $selected={selected}>123.3 MB</FooterWrapper>
+      <FooterWrapper $selected={selected}>{file.size}</FooterWrapper>
     </FileItemWrapper>
   )
 };

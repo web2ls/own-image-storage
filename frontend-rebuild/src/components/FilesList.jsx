@@ -38,11 +38,12 @@ const FilesList = () => {
 			<Container>
 				<Header>My cloud</Header>
 				<ListWrapper>
-					{files.map(file => (
+					{files.map((file, index) => (
 						<FileItem
-							key={file.id}
+							key={index}
+							id={index}
 							file={file}
-							selected={file.id === selectedFileId}
+							selected={index === selectedFileId}
 							selectFile={selectFile}
 							toggleSidebarInfo={toggleSidebarInfo} />
 					))}
