@@ -13,7 +13,7 @@ import {
   faFilePdf,
   faFileZipper,
   faFileImage,
-  faFile,
+  faFileCircleQuestion,
   faFolder,
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -30,7 +30,7 @@ const iconsPack = {
   'jpeg': faFileImage,
   'jpg': faFileImage,
   'png': faFileImage,
-  'file': faFile,
+  'file': faFileCircleQuestion,
   'folder': faFolder
 };
 

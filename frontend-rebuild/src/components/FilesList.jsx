@@ -38,7 +38,7 @@ const FilesList = () => {
 			<Container>
 				<Header>My cloud</Header>
 				<ListWrapper>
-					{files.map((file, index) => (
+					{MOCK_FILES_LIST.map((file, index) => (
 						<FileItem
 							key={index}
 							id={index}

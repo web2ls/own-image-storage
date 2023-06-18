@@ -35,6 +35,12 @@ const MOCK_FILES_LIST = [
     createdAt: new Date().getTime(),
     type: FILE_TYPES.AUDIO,
   },
+  {
+    id: 5,
+    name: 'file4',
+    createdAt: new Date().getTime(),
+    type: FILE_TYPES.FILE,
+  },
 ]
 
 export { FILE_TYPES, MOCK_FILES_LIST };
