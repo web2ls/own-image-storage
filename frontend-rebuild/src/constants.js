@@ -12,34 +12,40 @@ const FILE_TYPES = {
 
 const MOCK_FILES_LIST = [
   {
-    id: 1,
+    id: "1",
     name: 'file1',
     createdAt: new Date().getTime(),
     type: FILE_TYPES.WORD,
   },
   {
-    id: 2,
+    id: "2",
     name: 'file2',
     createdAt: new Date().getTime(),
     type: FILE_TYPES.EXCEL,
   },
   {
-    id: 3,
+    id: "3",
     name: 'file3',
     createdAt: new Date().getTime(),
     type: FILE_TYPES.VIDEO,
   },
   {
-    id: 4,
+    id: "4",
     name: 'file4',
     createdAt: new Date().getTime(),
     type: FILE_TYPES.AUDIO,
   },
   {
-    id: 5,
+    id: "5",
     name: 'file4',
     createdAt: new Date().getTime(),
     type: FILE_TYPES.FILE,
+  },
+  {
+    id: "6",
+    name: 'my folder',
+    createdAt: new Date().getTime(),
+    type: FILE_TYPES.FOLDER,
   },
 ]
 
