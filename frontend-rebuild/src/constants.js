@@ -49,4 +49,8 @@ const MOCK_FILES_LIST = [
   },
 ]
 
-export { FILE_TYPES, MOCK_FILES_LIST };
+const ItemTypes = {
+  FILE: 'file'
+}
+
+export { FILE_TYPES, MOCK_FILES_LIST, ItemTypes };

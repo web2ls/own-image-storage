@@ -1,8 +1,23 @@
 import styled from 'styled-components';
+import { useDrag } from 'react-dnd'
+import { ItemTypes } from '../constants';
 
 import IconButton from '../ui/IconButton';
 
-const FileItem = ({ id, file, selected, selectFile, toggleSidebarInfo }) => {
+const FileItem = ({
+  id,
+  file,
+  selected,
+  selectFile,
+  toggleSidebarInfo,
+}) => {
+	const [{isDragging}, drag] = useDrag(() => ({
+		type: ItemTypes.FILE,
+		collect: (monitor => ({
+			isDragging: !!monitor.isDragging()
+		}))
+	}))
+
   const toggleInfo = (event) => {
     console.log('click in tgw info');
     event.stopPropagation();
@@ -10,13 +25,23 @@ const FileItem = ({ id, file, selected, selectFile, toggleSidebarInfo }) => {
   }
 
   return (
-    <FileItemWrapper onClick={() => selectFile(id)}>
-      <FileContentWrapper $selected={selected}>
-        <IconButton icon={file.type} size='large' background={false} active={true} />
-        <IconButton icon='faEllipsisVertical' onClick={toggleInfo} />
-      </FileContentWrapper>
-      <FooterWrapper $selected={selected}>{file.size}</FooterWrapper>
-    </FileItemWrapper>
+    <div
+      ref={drag}
+      style={{
+        opacity: isDragging ? 0.5 : 1,
+        fontSize: 25,
+        fontWeight: 'bold',
+        cursor: 'move',
+      }}
+    >
+      <FileItemWrapper onClick={() => selectFile(id)} $isDragging={isDragging}>
+        <FileContentWrapper $selected={selected}>
+          <IconButton icon={file.type} size='large' background={false} active={true} />
+          <IconButton icon='faEllipsisVertical' onClick={toggleInfo} />
+        </FileContentWrapper>
+        <FooterWrapper $selected={selected}>{file.size}</FooterWrapper>
+      </FileItemWrapper>
+    </div>
   )
 };
 
@@ -31,6 +56,7 @@ const FileItemWrapper = styled.div`
   background: var(--white);
   border-radius: 20px;
   margin-right: 10px;
+  opacity: ${({$isDragging}) => $isDragging ? '0.5' : '1'}
 `;
 
 const FileContentWrapper = styled.div`
