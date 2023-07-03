@@ -16,13 +16,23 @@ const FilesList = () => {
 	const [isSidebarInfo, setIsSidebarInfo] = useState(false);
 
 	useEffect(() => {
-		APIService.getImages().then(res => {
-			console.log(res.data);
-			setFiles(res.data);
-		}).catch(err => {
-			console.error(err);
-		})
+		setFiles(MOCK_FILES_LIST);
 	}, []);
+
+	useEffect(() => {
+		console.log('files changed');
+		console.log(files);
+
+	}, [files]);
+
+	// useEffect(() => {
+	// 	APIService.getImages().then(res => {
+	// 		console.log(res.data);
+	// 		setFiles(res.data);
+	// 	}).catch(err => {
+	// 		console.error(err);
+	// 	})
+	// }, []);
 
 	const selectFile = (id) => {
 		console.log('select file', id);
@@ -34,12 +44,24 @@ const FilesList = () => {
 		setIsSidebarInfo((state) => !state);
 	}
 
+	const moveFile = (id, afterId) => {
+		console.log(id);
+		console.log(afterId);
+
+		const f = files.map(x => ({...x}));
+		const temp = f[id];
+		f[id] = f[afterId];
+		f[afterId] = temp;
+		setFiles(f);
+		console.log(f);
+	}
+
 	return (
 		<FilesListWrapper>
 			<Container>
 				<Header>My cloud</Header>
 				<ListWrapper>
-					{MOCK_FILES_LIST.map((file, index) => (
+					{files.map((file, index) => (
 						<FileItem
 							key={index}
 							id={index}
@@ -47,6 +69,7 @@ const FilesList = () => {
 							selected={index === selectedFileId}
 							selectFile={selectFile}
 							toggleSidebarInfo={toggleSidebarInfo}
+							moveFile={moveFile}
 						/>
 					))}
 				</ListWrapper>

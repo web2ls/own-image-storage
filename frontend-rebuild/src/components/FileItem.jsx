@@ -1,5 +1,6 @@
+import { useRef } from 'react';
 import styled from 'styled-components';
-import { useDrag } from 'react-dnd'
+import { useDrag, useDrop } from 'react-dnd'
 import { ItemTypes } from '../constants';
 
 import IconButton from '../ui/IconButton';
@@ -10,13 +11,32 @@ const FileItem = ({
   selected,
   selectFile,
   toggleSidebarInfo,
+  moveFile,
 }) => {
-	const [{isDragging}, drag] = useDrag(() => ({
+  const ref = useRef(null);
+	const [{isDragging, handlerId}, connectDrag] = useDrag(() => ({
 		type: ItemTypes.FILE,
-		collect: (monitor => ({
-			isDragging: !!monitor.isDragging()
-		}))
+    item: {id},
+		collect: (monitor => {
+      const result = {
+        isDragging: monitor.isDragging(),
+        handlerId: monitor.getHandlerId(),
+      }
+      return result;
+		})
 	}))
+
+  const [, connectDrop] = useDrop(() => ({
+    accept: ItemTypes.FILE,
+    drop({id: draggetId}) {
+      if (draggetId !== id) {
+        moveFile(draggetId, id);
+      }
+    }
+  }))
+
+  connectDrag(ref)
+  connectDrop(ref)
 
   const toggleInfo = (event) => {
     console.log('click in tgw info');
@@ -25,23 +45,18 @@ const FileItem = ({
   }
 
   return (
-    <div
-      ref={drag}
-      style={{
-        opacity: isDragging ? 0.5 : 1,
-        fontSize: 25,
-        fontWeight: 'bold',
-        cursor: 'move',
-      }}
-    >
-      <FileItemWrapper onClick={() => selectFile(id)} $isDragging={isDragging}>
-        <FileContentWrapper $selected={selected}>
-          <IconButton icon={file.type} size='large' background={false} active={true} />
-          <IconButton icon='faEllipsisVertical' onClick={toggleInfo} />
-        </FileContentWrapper>
-        <FooterWrapper $selected={selected}>{file.size}</FooterWrapper>
-      </FileItemWrapper>
-    </div>
+      <div
+        ref={ref}
+        data-handler-id={handlerId}
+      >
+        <FileItemWrapper onClick={() => selectFile(id)}>
+          <FileContentWrapper $selected={selected}>
+            <IconButton icon={file.type} size='large' background={false} active={true} />
+            <IconButton icon='faEllipsisVertical' onClick={toggleInfo} />
+          </FileContentWrapper>
+          <FooterWrapper $selected={selected}>{file.size}</FooterWrapper>
+        </FileItemWrapper>
+      </div>
   )
 };
 
@@ -56,7 +71,8 @@ const FileItemWrapper = styled.div`
   background: var(--white);
   border-radius: 20px;
   margin-right: 10px;
-  opacity: ${({$isDragging}) => $isDragging ? '0.5' : '1'}
+  opacity: ${({$isDragging}) => $isDragging ? '0.5' : '1'};
+  background: ${({$isOver}) => $isOver ? 'purple' : 'var(--white)'};
 `;
 
 const FileContentWrapper = styled.div`

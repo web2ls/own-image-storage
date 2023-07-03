@@ -37,7 +37,7 @@ const MOCK_FILES_LIST = [
   },
   {
     id: "5",
-    name: 'file4',
+    name: 'file5',
     createdAt: new Date().getTime(),
     type: FILE_TYPES.FILE,
   },
