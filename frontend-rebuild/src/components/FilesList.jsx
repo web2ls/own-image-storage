@@ -4,9 +4,10 @@ import styled from 'styled-components';
 import { Transition } from 'react-transition-group';
 
 import FileItem from "./FileItem";
+import FolderItem from './FolderItem';
 import SidebarInfo from './SidebarInfo';
 import APIService from '../services/API';
-import { ItemTypes } from '../constants';
+import { FILE_TYPES, ItemTypes } from '../constants';
 
 import { MOCK_FILES_LIST } from '../constants';
 
@@ -62,15 +63,32 @@ const FilesList = () => {
 				<Header>My cloud</Header>
 				<ListWrapper>
 					{files.map((file, index) => (
-						<FileItem
-							key={index}
-							id={index}
-							file={file}
-							selected={index === selectedFileId}
-							selectFile={selectFile}
-							toggleSidebarInfo={toggleSidebarInfo}
-							moveFile={moveFile}
-						/>
+						<>
+							{file.type === FILE_TYPES.FOLDER && (
+								<FolderItem
+									key={index}
+									id={index}
+									file={file}
+									selected={index === selectedFileId}
+									selectFile={selectFile}
+									toggleSidebarInfo={toggleSidebarInfo}
+									moveFile={moveFile}
+								/>
+							)}
+
+							{file.type !== FILE_TYPES.FOLDER && (
+								<FileItem
+									key={index}
+									id={index}
+									file={file}
+									selected={index === selectedFileId}
+									selectFile={selectFile}
+									toggleSidebarInfo={toggleSidebarInfo}
+									moveFile={moveFile}
+								/>
+							)}
+
+						</>
 					))}
 				</ListWrapper>
 			</Container>

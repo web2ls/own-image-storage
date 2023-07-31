@@ -50,7 +50,8 @@ const MOCK_FILES_LIST = [
 ]
 
 const ItemTypes = {
-  FILE: 'file'
+  FILE: 'file',
+  FOLDER: 'folder'
 }
 
 export { FILE_TYPES, MOCK_FILES_LIST, ItemTypes };

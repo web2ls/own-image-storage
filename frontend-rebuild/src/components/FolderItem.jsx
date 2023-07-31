@@ -1,11 +1,11 @@
 import { useRef } from 'react';
 import styled from 'styled-components';
-import { useDrag, useDrop } from 'react-dnd'
+import { useDrop } from 'react-dnd'
 import { ItemTypes } from '../constants';
 
 import IconButton from '../ui/IconButton';
 
-const FileItem = ({
+const FolderItem = ({
   id,
   file,
   selected,
@@ -14,35 +14,19 @@ const FileItem = ({
   moveFile,
 }) => {
   const ref = useRef(null);
-	const [{isDragging, handlerId}, connectDrag] = useDrag(() => ({
-		type: ItemTypes.FILE,
-    item: {id},
-		collect: (monitor => {
-      console.log('drag it');
 
-      const result = {
-        isDragging: monitor.isDragging(),
-        handlerId: monitor.getHandlerId(),
+  const [{handlerId}, connectDrop] = useDrop(() => ({
+    accept: ItemTypes.FOLDER,
+    drop({id: draggetId}) {
+      console.log('drop it');
+
+      if (draggetId !== id) {
+        moveFile(draggetId, id);
       }
-      return result;
-		})
-	}))
+    }
+  }))
 
-  /*
-    TODO: Think about dragging files into folders
-    but later, because main functionality not created yet
-  */
-  // const [, connectDrop] = useDrop(() => ({
-  //   accept: ItemTypes.FILE,
-  //   drop({id: draggetId}) {
-  //     if (draggetId !== id) {
-  //       moveFile(draggetId, id);
-  //     }
-  //   }
-  // }))
-
-  connectDrag(ref)
-  // connectDrop(ref)
+  connectDrop(ref);
 
   const toggleInfo = (event) => {
     console.log('click in tgw info');
@@ -55,20 +39,20 @@ const FileItem = ({
         ref={ref}
         data-handler-id={handlerId}
       >
-        <FileItemWrapper onClick={() => selectFile(id)}>
-          <FileContentWrapper $selected={selected}>
+        <FolderItemWrapper onClick={() => selectFile(id)}>
+          <FolderContentWrapper $selected={selected}>
             <IconButton icon={file.type} size='large' background={false} active={true} />
             <IconButton icon='faEllipsisVertical' onClick={toggleInfo} />
-          </FileContentWrapper>
+          </FolderContentWrapper>
           <FooterWrapper $selected={selected}>{file.size}</FooterWrapper>
-        </FileItemWrapper>
+        </FolderItemWrapper>
       </div>
   )
 };
 
-export default FileItem;
+export default FolderItem;
 
-const FileItemWrapper = styled.div`
+const FolderItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 250px;
@@ -81,7 +65,7 @@ const FileItemWrapper = styled.div`
   background: ${({$isOver}) => $isOver ? 'purple' : 'var(--white)'};
 `;
 
-const FileContentWrapper = styled.div`
+const FolderContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
