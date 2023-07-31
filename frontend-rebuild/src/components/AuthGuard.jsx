@@ -1,6 +1,5 @@
 import {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-import AuthService from "../services/Auth";
 import fireAuth from '../config/firebase';
 
 const AuthGuard = (props) => {
@@ -17,14 +16,6 @@ const AuthGuard = (props) => {
         navigate('/login');
       }
     })
-  }, []);
-
-  useEffect(() => {
-    const isAuth = AuthService.isAuthorized();
-    setIsAuth(isAuth);
-    if (!isAuth) {
-      navigate('/login');
-    }
   }, []);
 
   if (!isAuth) return null;
